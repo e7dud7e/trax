@@ -114,7 +114,8 @@ class Model(object):
 
     new_weights_and_biases = []
     for v, dv in zip(self.weights + self.biases, gradients):
-      new_weights_and_biases.append(v - learning_rate * dv)
+      updated_v = v - learning_rate * dv
+      new_weights_and_biases.append(np.asarray(updated_v))
 
     total_len = len(new_weights_and_biases)
     self.weights = new_weights_and_biases[:total_len // 2]
